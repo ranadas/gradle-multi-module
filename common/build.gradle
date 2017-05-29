@@ -5,8 +5,6 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-
 //repositories {
 //   go up a level to get the locations
 //}

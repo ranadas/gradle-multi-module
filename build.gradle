@@ -1,43 +1,38 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.0.M1'
-	}
-	repositories {
-		mavenLocal()
-		mavenCentral()
-		jcenter()
-		maven { url "https://repo.spring.io/snapshot" }
-		maven { url "https://repo.spring.io/milestone" }
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")		
-	}
 }
 
-apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-repositories {
-	mavenLocal()
-	
-	mavenCentral()
-	maven { url "https://repo.spring.io/snapshot" }
-	maven { url "https://repo.spring.io/milestone" }
-}
-
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test')		
+//	compile project('common')
+//	compile project('api-services')
 }
 
 task version << {
     println "Gradle version: " + project.getGradle().getGradleVersion()
     println "Groovy version: " + GroovySystem.getVersion()
+}
+
+//allprojects {
+//}
+
+subprojects {
+    group = 'com.rdas'
+    version = '0.1-SNAPSHOT'
+
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.incremental = true
+    }
 }
