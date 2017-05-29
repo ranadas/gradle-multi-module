@@ -1,15 +1,7 @@
-buildscript {
-    ext {
-        h2_version ="1.4.195"
-        lombok_version ="1.16.16"
-    }
-}
-
-//repositories {
-//   go up a level to get the locations
-//}
+//repositories go up a level to get the locations
+group = 'com.rdas'
 
 dependencies {
-    compile("com.h2database:h2:$h2_version")
-    compile("org.projectlombok:lombok:$lombok_version")
+    compile libraries.h2
+    compile libraries.lombok
 }
