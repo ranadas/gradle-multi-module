@@ -7,12 +7,15 @@ ext {
     h2_version = "1.4.195"
     lombok_version = "1.16.16"
     spring_boot_version = '2.0.0.M1'
+    swagger2_version = "2.7.0"
 
     libraries = [
             junit         : dependencies.create("junit:junit:${junitVersion}"),
             festAssertions: dependencies.create("org.easytesting:fest-assert:${festAssertionsVersion}"),
             mockito       : dependencies.create("org.mockito:mockito-all:${mockitoVersion}"),
             h2            : dependencies.create("com.h2database:h2:${h2_version}"),
-            lombok        : dependencies.create("org.projectlombok:lombok:${lombok_version}")
+            lombok        : dependencies.create("org.projectlombok:lombok:${lombok_version}"),
+            swagger2      : dependencies.create("io.springfox:springfox-swagger2:${swagger2_version}"),
+            swaggerui     : dependencies.create("io.springfox:springfox-swagger-ui:${swagger2_version}")
     ]
 }
