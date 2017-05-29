@@ -1,0 +1,18 @@
+ext {
+    // library versions
+    junitVersion = '4.12'
+    festAssertionsVersion = '1.4'
+    mockitoVersion = '1.9.5'
+    guavaVersion = '18.0'
+    h2_version = "1.4.195"
+    lombok_version = "1.16.16"
+    spring_boot_version = '2.0.0.M1'
+
+    libraries = [
+            junit         : dependencies.create("junit:junit:${junitVersion}"),
+            festAssertions: dependencies.create("org.easytesting:fest-assert:${festAssertionsVersion}"),
+            mockito       : dependencies.create("org.mockito:mockito-all:${mockitoVersion}"),
+            h2            : dependencies.create("com.h2database:h2:${h2_version}"),
+            lombok        : dependencies.create("org.projectlombok:lombok:${lombok_version}")
+    ]
+}

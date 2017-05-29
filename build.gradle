@@ -1,29 +1,27 @@
+apply plugin: 'idea'
+apply from: './libraries.gradle'
+
 buildscript {
 }
 
-apply plugin: 'idea'
-
-dependencies {
-//	compile project('common')
-//	compile project('api-services')
+group = 'com.rdas'
+project.ext {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 }
 
-task version << {
+//dependencies {
+//	compile project('common')
+//	compile project('api-services')
+//}
+
+task printVersion {
     println "Gradle version: " + project.getGradle().getGradleVersion()
     println "Groovy version: " + GroovySystem.getVersion()
 }
 
-//allprojects {
-//}
-
-subprojects {
-    group = 'com.rdas'
-    version = '0.1-SNAPSHOT'
-
-    apply plugin: 'java'
-
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+allprojects {
+    version = implementationVersion
 
     repositories {
         mavenLocal()
@@ -31,8 +29,50 @@ subprojects {
         maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
     }
+}
+
+subprojects {subProject ->
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    targetCompatibility = rootProject.sourceCompatibility
+    sourceCompatibility = rootProject.targetCompatibility
+
+    idea {
+        module {
+            downloadJavadoc = true
+            downloadSources = true
+
+            // set IDE compile output path to same as java compile output path (JRebel monitors that directory for updates)
+            inheritOutputDirs = false
+            outputDir = subProject.sourceSets.main.output.classesDir
+            testOutputDir = new File(rootProject.projectDir, "/out/test/" + subProject.name)
+        }
+    }
+
+    // common dependencies for all projects
+    dependencies {
+        testCompile libraries.junit
+        testCompile libraries.festAssertions
+        testCompile libraries.mockito
+    }
+
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+
+    javadoc {
+        options.encoding = 'UTF-8'
+    }
 
     tasks.withType(JavaCompile) {
-        options.incremental = true
+        options.encoding = 'UTF-8'
     }
+
+    test {
+        testLogging {
+            exceptionFormat = 'full'
+        }
+    }
+
 }
