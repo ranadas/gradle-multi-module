@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: Spring Boot 5 (Reactive API)
+server:
+  port: 8088
+#  context-path: /apiservs
+  servlet:
+    context-path: /apislv
