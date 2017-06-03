@@ -1,0 +1,7 @@
+//repositories go up a level to get the locations
+group = 'com.rdas'
+
+dependencies {
+    compile libraries.h2
+    compile libraries.lombok
+}
