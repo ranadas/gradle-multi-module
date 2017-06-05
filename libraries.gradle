@@ -8,6 +8,7 @@ ext {
     lombok_version = "1.16.16"
     spring_boot_version = '2.0.0.M1'
     swagger2_version = "2.7.0"
+    derby_version="10.13.1.1"
 
     libraries = [
             junit         : dependencies.create("junit:junit:${junitVersion}"),
@@ -16,6 +17,7 @@ ext {
             h2            : dependencies.create("com.h2database:h2:${h2_version}"),
             lombok        : dependencies.create("org.projectlombok:lombok:${lombok_version}"),
             swagger2      : dependencies.create("io.springfox:springfox-swagger2:${swagger2_version}"),
-            swaggerui     : dependencies.create("io.springfox:springfox-swagger-ui:${swagger2_version}")
+            swaggerui     : dependencies.create("io.springfox:springfox-swagger-ui:${swagger2_version}"),
+            derby         : dependencies.create("org.apache.derby:derby:${derby_version}"),
     ]
 }
