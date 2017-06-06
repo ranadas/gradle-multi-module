@@ -1,4 +1,27 @@
 spring:
+  jpa:
+    # Show or not log for each sql query
+    show-sql: true
+    hibernate:
+      # Hibernate ddl auto (create, create-drop, update)
+      ddl-auto: create-drop
+      # Naming strategy
+    properties:
+      hibernate:
+        dialect:  org.hibernate.dialect.DerbyDialect
+        naming-strategy:  org.hibernate.cfg.ImprovedNamingStrategy
   main:
     web-application-type:
 #    web-environment:  false
+
+
+#spring:
+#  datasource:
+#    url:  jdbc:derby://localhost:1527/MyTestDb
+#    username: dbuser
+#    password: dbpass
+#    initialize: false
+#    driver-class-name:  org.apache.derby.jdbc.ClientDriver
+#    # Keep the connection alive if idle for a long time (needed in production)
+#    testWhileIdle:  true
+#    validationQuery:  SELECT 1
