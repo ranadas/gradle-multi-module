@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 
@@ -24,12 +26,15 @@ import javax.sql.DataSource;
 public class TestDerbyConnection {
 
     @Autowired
-    private DataSource derbyDB;
+    private DataSource dataSource;
 
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Test
     public void testConnectionIsValid() {
-        System.out.println(derbyDB);
+        System.out.println(dataSource);
+        System.out.println(jdbcTemplate);
     }
 
 
@@ -37,22 +42,27 @@ public class TestDerbyConnection {
             properties = {
                     "spring.datasource.driverClassName=org.apache.derby.jdbc.EmbeddedDriver",
                     "spring.datasource.urljdbc:derby:target/database/message;create=true",
-                    "spring.datasource.username=app",
-                    "spring.datasource.password=app"
+                    "spring.datasource.username=appuser",
+                    "spring.datasource.password=apppwd"
             }
     )
     @Configuration
     static class TestConfig {
         @Bean(name = "mysqlJdbcTemplate")
-        public JdbcTemplate jdbcTemplate(@Qualifier("derbyDB") DataSource dsMySQL) {
-            return new JdbcTemplate(dsMySQL);
+        public JdbcTemplate jdbcTemplate(@Qualifier("derbyDB") DataSource derbyDB) {
+            return new JdbcTemplate(derbyDB);
         }
 
 
         @Bean(name = "derbyDB")
-        //@ConfigurationProperties(prefix = "spring.ds_mysql")
-        public DataSource mysqlDataSource() {
+        @ConfigurationProperties(prefix = "spring.datasource")
+        public DataSource derbyDB() {
             return (DataSource) DataSourceBuilder.create().build();
+        }
+
+        @PostConstruct
+        public void init() {
+
         }
     }
 
