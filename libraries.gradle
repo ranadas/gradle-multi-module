@@ -9,6 +9,7 @@ ext {
     spring_boot_version = '2.0.0.M1'
     swagger2_version = "2.7.0"
     derby_version="10.13.1.1"
+    aspectj_version="1.8.10"
 
     libraries = [
             junit         : dependencies.create("junit:junit:${junitVersion}"),
@@ -19,5 +20,7 @@ ext {
             swagger2      : dependencies.create("io.springfox:springfox-swagger2:${swagger2_version}"),
             swaggerui     : dependencies.create("io.springfox:springfox-swagger-ui:${swagger2_version}"),
             derby         : dependencies.create("org.apache.derby:derby:${derby_version}"),
+            aspectjrt     : dependencies.create("org.aspectj:aspectjrt:${aspectj_version}"),
+            aspectjweaver : dependencies.create("org.aspectj:aspectjweaver:${aspectj_version}")
     ]
 }
