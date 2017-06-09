@@ -1,5 +1,6 @@
 package com.rdas.controller;
 
+import com.rdas.util.Loggable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ public class HelloController {
      * localhost:8081/hello
      * @return
      */
+    @Loggable(Loggable.DEBUG)
     @ApiOperation(value = "Hello.", notes = "Says Hello.")
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public    @ResponseBody

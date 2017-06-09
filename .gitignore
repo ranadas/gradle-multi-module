@@ -17,3 +17,5 @@
 *.ipr
 *.jar
 out/
+*.class
+build/

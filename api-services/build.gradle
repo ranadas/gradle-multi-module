@@ -26,4 +26,8 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile libraries.swagger2
     compile libraries.swaggerui
+    compile group: 'org.aspectj', name: 'aspectjrt', version: '1.8.10'
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.10'
+    compile "javax.validation:validation-api"
+    compile "org.hibernate:hibernate-validator"
 }
