@@ -26,4 +26,8 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile libraries.swagger2
     compile libraries.swaggerui
+    compile libraries.aspectjrt
+    compile libraries.aspectjweaver
+    compile "javax.validation:validation-api"
+    compile "org.hibernate:hibernate-validator"
 }
