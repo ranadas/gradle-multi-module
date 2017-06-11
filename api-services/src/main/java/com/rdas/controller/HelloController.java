@@ -10,16 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by x148128 on 29/05/2017.
- *
+ * http://localhost:8088/apislv/swagger-ui.html
  */
 @Api(value = "2. RestController", description = " A SIMPLE hello Controller")
 @RestController
 public class HelloController {
 
     /**
-     * http://localhost:8081/swagger-ui.html
-     * localhost:8081/hello
-     * @return
+     * localhost:8088/apislv/hello
      */
     @Loggable(Loggable.DEBUG)
     @ApiOperation(value = "Hello.", notes = "Says Hello.")
