@@ -22,6 +22,7 @@ public class DerbyDbConfig {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase db = builder
                 .setType(EmbeddedDatabaseType.DERBY)
+                .setName("ReadDb")
                 .addScript("create_tables.sql")
                 .build();
         return db;
