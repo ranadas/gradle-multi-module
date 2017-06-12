@@ -26,4 +26,5 @@ dependencies {
     compile "com.corundumstudio.socketio:netty-socketio:1.7.12"
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile "com.github.tomas-langer:chalk:1.0.2"
 }
