@@ -30,4 +30,5 @@ dependencies {
     compile libraries.aspectjweaver
     compile "javax.validation:validation-api"
     compile "org.hibernate:hibernate-validator"
+    testCompile "com.jayway.restassured:rest-assured:2.9.0"
 }
