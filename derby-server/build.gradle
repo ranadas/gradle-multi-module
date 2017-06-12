@@ -19,6 +19,7 @@ apply plugin: 'io.spring.dependency-management'
 dependencies {
     compile project(':common')
     compile libraries.derby
+    testCompile libraries.derbyClient
     compile libraries.lombok
     compile "org.springframework.boot:spring-boot-starter"
     compile "org.springframework:spring-jdbc"
