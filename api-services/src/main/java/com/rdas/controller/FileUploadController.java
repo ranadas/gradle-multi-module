@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
+ * https://www.mkyong.com/spring-boot/spring-boot-file-upload-example-ajax-and-rest/
  * Created by rdas on 10/06/2017.
  */
 @RestController
