@@ -1,3 +1,5 @@
+package com.rdas;
+
 import org.junit.Rule
 import org.junit.rules.TestName
 import spock.lang.Specification

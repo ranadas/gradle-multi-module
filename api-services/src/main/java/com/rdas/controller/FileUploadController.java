@@ -1,9 +1,11 @@
 package com.rdas.controller;
 
+import com.rdas.service.FileDetectionService;
 import com.rdas.service.FileUploaderService;
 import com.rdas.util.Loggable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.tika.Tika;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class FileUploadController {
     @Autowired
     private FileUploaderService fileUploaderService;
 
+    @Autowired
+    private FileDetectionService fileDetectionService;
+
     @Loggable(Loggable.DEBUG)
     @ApiOperation(value = "api/upload.", notes = "upload a single file.")
     @PostMapping("/api/upload")
@@ -43,6 +48,9 @@ public class FileUploadController {
 
         try {
             fileUploaderService.saveUploadedFiles(Arrays.asList(uploadedFile));
+            Tika tika = new Tika();
+            String detectedType = tika.detect(uploadedFile.getBytes());
+            System.out.println(detectedType);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
