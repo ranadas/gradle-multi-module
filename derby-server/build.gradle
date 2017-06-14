@@ -19,10 +19,16 @@ apply plugin: 'io.spring.dependency-management'
 dependencies {
     compile project(':common')
     compile libraries.derby
+    testCompile libraries.derbyClient
     compile libraries.lombok
     compile "org.springframework.boot:spring-boot-starter"
     compile "org.springframework:spring-jdbc"
     compile "com.corundumstudio.socketio:netty-socketio:1.7.12"
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile "com.github.tomas-langer:chalk:1.0.2"
+    testCompile "com.monitorjbl:xlsx-streamer:1.0.1"
+    testCompile group: 'org.apache.poi', name: 'poi', version: '3.16'
+    testCompile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.16'
+    testCompile "net.sf.opencsv:opencsv:1.8"
 }

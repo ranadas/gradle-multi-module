@@ -20,6 +20,7 @@ ext {
             swagger2      : dependencies.create("io.springfox:springfox-swagger2:${swagger2_version}"),
             swaggerui     : dependencies.create("io.springfox:springfox-swagger-ui:${swagger2_version}"),
             derby         : dependencies.create("org.apache.derby:derby:${derby_version}"),
+            derbyClient   : dependencies.create("org.apache.derby:derbyclient:${derby_version}"),
             aspectjrt     : dependencies.create("org.aspectj:aspectjrt:${aspectj_version}"),
             aspectjweaver : dependencies.create("org.aspectj:aspectjweaver:${aspectj_version}")
     ]

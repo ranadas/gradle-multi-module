@@ -1,0 +1,10 @@
+logging:
+  level:
+    ca.hrb: INFO
+    org.springframework: ERROR
+  pattern:
+    console:  "%5p | %d | %F | %L | %m%n"
+
+integrationtests:
+  localExcelFolder: src/test/resources/testXlsx/
+#http://www.java67.com/2014/09/how-to-read-write-xlsx-file-in-java-apache-poi-example.html

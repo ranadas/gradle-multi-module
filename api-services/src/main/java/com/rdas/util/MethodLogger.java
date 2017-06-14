@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 /**
  * http://www.makeinjava.com/logging-aspect-restful-web-service-using-spring-aop-log-requests-responses/
  * https://stackoverflow.com/questions/30335563/spring-boot-logger-aspects
+ * http://www.yegor256.com/2014/06/01/aop-aspectj-java-method-logging.html
  */
 @Aspect
 @Component

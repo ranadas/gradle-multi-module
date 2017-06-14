@@ -1,6 +1,9 @@
 package com.rdas;
 
 import com.corundumstudio.socketio.SocketIOServer;
+import com.github.tomaslanger.chalk.Chalk;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,24 +17,23 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class DbServerApplication {
 
-
+    private static final Logger logger = LoggerFactory.getLogger(DbServerApplication.class);
     @Autowired
     private SocketIOServer server;
 
     public static void main(String[] args) throws Exception {
 //        SpringApplication.run(DbServerApplication.class, args);
-
-        System.out.println("\n\n  ** Starting database server. ** \n\n");
-
+        logger.info(""+Chalk.on("\n" +
+                "** Starting database server. ** \n").green());
         ConfigurableApplicationContext ctx = SpringApplication.run(DbServerApplication.class, args);
         DbServerApplication mainObj = ctx.getBean(DbServerApplication.class);
         mainObj.init();
 
-        System.out.println("DbServer Application exited");
+        logger.info(""+Chalk.on("DbServer Application started").green().underline());
     }
 
     public void init() throws Exception {
-        System.out.println("\n\n\ninside init method, starting socketio server");
+        logger.info(""+Chalk.on("\nin DbServerApplication init, starting socketio server..\n").blue().underline());
         server.start();
     }
 }
