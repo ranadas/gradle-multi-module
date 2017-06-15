@@ -18,15 +18,7 @@ apply plugin: 'io.spring.dependency-management'
 
 dependencies {
     compile project(':common')
-//    compile libraries.lombok
-//    compile libraries.swagger2
-//    compile libraries.swaggerui
-    //compile('org.springframework.boot:spring-boot-starter')
-    //compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-activemq")
     testCompile('org.springframework.boot:spring-boot-starter-test')
-//    compile "org.springframework:spring-jms:5.0.0.M5"
-//    compile "org.apache.activemq:activemq-core:5.7.0"
-    compile "org.apache.activemq:activemq-kahadb-store"
     compile "org.springframework:spring-jms"
 }
