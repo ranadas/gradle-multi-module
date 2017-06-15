@@ -1,0 +1,3 @@
+server:
+  context-path:  /jmsaq
+  port: 8088
