@@ -1,3 +1,9 @@
+
 server:
   context-path:  /jmsaq
   port: 8088
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
