@@ -21,3 +21,4 @@ out/
 build/
 tempFileUploads/
 .idea/
+activemq-data/

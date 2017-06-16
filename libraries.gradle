@@ -10,6 +10,7 @@ ext {
     swagger2_version = "2.7.0"
     derby_version="10.13.1.1"
     aspectj_version="1.8.10"
+    chalk_version="1.0.2"
 
     libraries = [
             junit         : dependencies.create("junit:junit:${junitVersion}"),
@@ -22,6 +23,7 @@ ext {
             derby         : dependencies.create("org.apache.derby:derby:${derby_version}"),
             derbyClient   : dependencies.create("org.apache.derby:derbyclient:${derby_version}"),
             aspectjrt     : dependencies.create("org.aspectj:aspectjrt:${aspectj_version}"),
-            aspectjweaver : dependencies.create("org.aspectj:aspectjweaver:${aspectj_version}")
+            aspectjweaver : dependencies.create("org.aspectj:aspectjweaver:${aspectj_version}"),
+            chalk         : dependencies.create("com.github.tomas-langer:chalk:${chalk_version}")
     ]
 }

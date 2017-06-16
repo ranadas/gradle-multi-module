@@ -1,0 +1,6 @@
+logging:
+  level:
+    ca.hrb: INFO
+    org.springframework: ERROR
+  pattern:
+    console:  "%5p | %d | %F | %L | %m%n"

@@ -2,4 +2,5 @@ rootProject.name='gr-multi-module'
 
 include 'common'
 include 'api-services', 'data-access', 'jms-service', 'derby-server'
+include 'embedded-jms'
 include 'spock-integration-tests'
