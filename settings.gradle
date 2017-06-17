@@ -1,6 +1,9 @@
 rootProject.name='gr-multi-module'
-
+//common codes e.g. entities, utilities
 include 'common'
-include 'api-services', 'data-access', 'jms-service', 'derby-server'
-include 'embedded-jms'
+//microservices e.g, restful apis, jms access, data access service etc
+include 'api-services', 'data-access', 'jms-service'
+// embedded servers, message queues etc
+include 'embedded-jms', 'derby-server'
+// spock integration tests
 include 'spock-integration-tests'
