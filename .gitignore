@@ -22,3 +22,4 @@ build/
 tempFileUploads/
 .idea/
 activemq-data/
+node_modules/
