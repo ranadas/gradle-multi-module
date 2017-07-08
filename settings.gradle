@@ -7,3 +7,4 @@ include 'api-services', 'data-access', 'jms-service'
 include 'embedded-jms', 'derby-server'
 // spock integration tests
 include 'spock-integration-tests'
+include 'iconic'
