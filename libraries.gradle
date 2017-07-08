@@ -6,7 +6,7 @@ ext {
     guavaVersion = '18.0'
     h2_version = "1.4.195"
     lombok_version = "1.16.16"
-    spring_boot_version = '2.0.0.M1'
+    spring_boot_version = '2.0.0.M2'
     swagger2_version = "2.7.0"
     derby_version="10.13.1.1"
     aspectj_version="1.8.10"
