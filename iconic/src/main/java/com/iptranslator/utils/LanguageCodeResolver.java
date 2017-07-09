@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created by rdas on 08/07/2017.
+ * TODO : should really return Optional instead of null.
  */
 @Service
 @EnableConfigurationProperties
@@ -34,6 +35,7 @@ public class LanguageCodeResolver {
 
     //Column 639-2/B
     private Map<String, String> languageMap6392B;
+
     public void setLanguageMap6392B(Map<String, String> languageMap6392B) {
         this.languageMap6392B = languageMap6392B;
     }
@@ -44,6 +46,7 @@ public class LanguageCodeResolver {
     @NotNull
     @Valid
     private Map<String, String> languageMapKilgray;
+
     public void setLanguageMapKilgray(Map<String, String> languageMapKilgray) {
         this.languageMapKilgray = languageMapKilgray;
     }
@@ -106,5 +109,27 @@ public class LanguageCodeResolver {
         } else {
             return languages;
         }
+    }
+
+    public String getStandardLanguageCode(String lang) {
+        lang = lang.toLowerCase();
+        if (languageMap6391.containsKey(lang)) {
+            return lang;
+        } else if (languageMap6392B.containsKey(lang)) {
+            return languageMap6392B.get(lang);
+        } else if (containsCaseInsensitive(lang, languageMapKilgray)) {
+            return getValueCaseInsensitive(lang, languageMapKilgray);
+        } else {
+            return null;
+        }
+    }
+
+    private String getValueCaseInsensitive(String code, Map<String, String> map) {
+        return map.entrySet()
+                .parallelStream()
+                .filter(e -> e.getValue().equalsIgnoreCase(code))
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
     }
 }

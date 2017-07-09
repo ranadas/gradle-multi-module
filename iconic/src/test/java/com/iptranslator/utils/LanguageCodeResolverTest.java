@@ -63,4 +63,25 @@ public class LanguageCodeResolverTest {
         List<String> languageSet = languageCodeResolver.getLanguages("Kilgray", languages);
         assertThat(languageSet.size(), is(13));
     }
+
+    @Test
+    public void assertThatKilgrayCodeWillReturn20EslanguageSet() {
+        languages = Arrays.asList("es");
+        List<String> languageSet = languageCodeResolver.getLanguages("Kilgray", languages);
+        assertThat(languageSet.size(), is(20));
+    }
+
+    @Test
+    public void assertThatArbitararyCodeWillReturnNullLangCode() {
+        String ga = languageCodeResolver.getStandardLanguageCode("gaxx");
+        Assert.assertNull(ga);
+    }
+
+    @Test
+    public void assertThatLangCodeWillReturnKnownLangCode() {
+        String ga = languageCodeResolver.getStandardLanguageCode("ga");
+        assertThat(ga, is("ga"));
+        String gle = languageCodeResolver.getStandardLanguageCode("gle");
+        assertThat(gle, is("ga"));
+    }
 }
