@@ -10,6 +10,12 @@ import org.springframework.boot.test.context.ConfigFileApplicationContextInitial
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 /**
  * Created by rdas on 08/07/2017.
  */
@@ -18,14 +24,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //@ActiveProfiles("dev")
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { TestConfig.class }, initializers = ConfigFileApplicationContextInitializer.class)
+@ContextConfiguration(classes = {TestConfig.class}, initializers = ConfigFileApplicationContextInitializer.class)
 public class LanguageCodeResolverTest {
 
     @Autowired
     private LanguageCodeResolver languageCodeResolver;
 
+    private List<String> languages;
+
     @Before
     public void init() throws Exception {
+        languages = Arrays.asList("eng", "es", "de", "fr", "it");
     }
 
     @Test
@@ -39,5 +48,19 @@ public class LanguageCodeResolverTest {
         Assert.assertTrue(languageCodeResolver.areValidLanguages("zhtw", "zhtw"));
         Assert.assertTrue(languageCodeResolver.areValidLanguages("spa", "eng"));
         Assert.assertTrue(languageCodeResolver.areValidLanguages("gle", "eng"));
+    }
+
+    @Test
+    public void assertThatUnknownLangCodeWillReturnSamelanguageSet() {
+        List<String> languageSet = languageCodeResolver.getLanguages("NON_STD_CODE", languages);
+        assertThat(languageSet.size(), is(5));
+        assertThat(languageSet, is(languages));
+    }
+
+    @Test
+    public void assertThatKilgrayCodeWillReturn13EnglanguageSet() {
+        languages = Arrays.asList("en");
+        List<String> languageSet = languageCodeResolver.getLanguages("Kilgray", languages);
+        assertThat(languageSet.size(), is(13));
     }
 }
