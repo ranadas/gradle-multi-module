@@ -37,6 +37,9 @@ public class LanguageCodeResolver {
 
     //Column 639-2/B
     private Map<String, String> languageMap6392B;
+    public void setLanguageMap6392B(Map<String, String> languageMap6392B) {
+        this.languageMap6392B = languageMap6392B;
+    }
 
     /**
      * Kilgray language codes for MemoQPlugin
@@ -66,21 +69,6 @@ public class LanguageCodeResolver {
                 put("el", "el");
                 put("nl", "nl");
                 put("ro", "ro");
-            }
-        });
-        languageMap6392B = Collections.unmodifiableMap(new HashMap<String, String>() {
-            {
-                put("eng", "en");
-                put("fre", "fr");
-                put("ger", "de");
-                put("por", "pt");
-                put("spa", "es");
-                put("chi_zh", "zhcn");
-                put("chi_tw", "zhtw");
-                put("jpn", "ja");
-                put("kor", "ko");
-                put("rus", "ru");
-                put("gle", "ga");
             }
         });
         logger.info(" in LanguageCodeResolver Post Construct!!!");
