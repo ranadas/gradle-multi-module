@@ -1,0 +1,63 @@
+logging:
+  level:
+    org.springframework.web: ERROR
+    com.iptranslator: DEBUG
+langcodes:
+  languageMapKilgray:
+    eng:  en
+    eng-BZ: en
+    eng-CA: en
+    eng-CB: en
+    eng-IE: en
+    eng-JM: en
+    eng-NZ: en
+    eng-PH: en
+    eng-ZA: en
+    eng-TT: en
+    eng-GB: en
+    eng-US: en
+    eng-ZW: en
+    fre:  fr
+    fre-BE: fr
+    fre-CA: fr
+    fre-FR: fr
+    fre-LU: fr
+    fre-MC: fr
+    fre-CH: fr
+    ger: de
+    ger-AT: de
+    ger-DE: de
+    ger-LI: de
+    ger-LU: de
+    ger-CH: de
+    por : pt
+    por-PT: pt
+    por-BR: pt
+    spa:  es
+    spa-AR: es
+    spa-BO: es
+    spa-CL: es
+    spa-CO: es
+    spa-CR: es
+    spa-DO: es
+    spa-EC: es
+    spa-SV: es
+    spa-GT: es
+    spa-HN: es
+    spa-MX: es
+    spa-NI: es
+    spa-PA: es
+    spa-PY: es
+    spa-PE: es
+    spa-PR: es
+    spa-ES: es
+    spa-UY: es
+    spa-VE: es
+    zho-CN: zhcn
+    zho-TW: zhtw
+    zho-HK: zhtw
+    zho-MO: zhtw
+    zho-SG: zhtw
+    jpn:  ja
+    kor:  ko
+    gle:  ga
