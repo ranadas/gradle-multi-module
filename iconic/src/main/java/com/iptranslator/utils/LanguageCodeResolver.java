@@ -51,6 +51,16 @@ public class LanguageCodeResolver {
         this.languageMapKilgray = languageMapKilgray;
     }
 
+    @NotNull
+    @Valid
+    private Map<String, String> bingLanguageMapping;
+    public void setBingLanguageMapping(Map<String, String> bingLanguageMapping) {
+        this.bingLanguageMapping = bingLanguageMapping;
+    }
+    public Map<String, String> getBingMapping() {
+        return Collections.unmodifiableMap(bingLanguageMapping);
+    }
+
     @PostConstruct
     public void handlersLikeXml() {
         languageMap6391 = Collections.unmodifiableMap(new HashMap<String, String>() {
