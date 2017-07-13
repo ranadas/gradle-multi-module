@@ -1,0 +1,30 @@
+buildscript {
+    repositories { mavenCentral() }
+}
+
+plugins { id "io.spring.dependency-management" version "1.0.0.RELEASE" }
+
+ext {
+    lombokVersion = '1.16.18'
+    springBootVersion = '1.5.4.RELEASE'
+}
+
+jar {
+    baseName = 'spring5-library'
+    version = '0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+
+repositories { mavenCentral() }
+
+dependencies {
+    compile "org.projectlombok:lombok:${lombokVersion}"
+    compile('org.springframework.boot:spring-boot-starter')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
+}
+
+
