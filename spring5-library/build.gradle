@@ -21,10 +21,35 @@ dependencies {
     compile "org.projectlombok:lombok:${lombokVersion}"
     compile('org.springframework.boot:spring-boot-starter')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile "com.jcabi:jcabi-http:1.17.1"
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.4.1.Final'
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1-m09'
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-common', version: '2.25.1'
+    compile libraries.chalk
 }
 
 dependencyManagement {
     imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
+}
+
+test {
+    testLogging {
+        // Make sure output from
+        // standard out or error is shown
+        // in Gradle output.
+        showStandardStreams = true
+
+        // Or we use events method:
+        // events 'standard_out', 'standard_error'
+
+        // Or set property events:
+        // events = ['standard_out', 'standard_error']
+
+        // Instead of string values we can
+        // use enum values:
+        // events org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT,
+        //        org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR,
+    }
 }
 
 
