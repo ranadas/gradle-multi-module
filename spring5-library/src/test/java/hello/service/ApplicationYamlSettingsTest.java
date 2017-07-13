@@ -13,8 +13,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfiguration.class)
-@WebAppConfiguration
-public class ServiceTest {
+//@WebAppConfiguration
+public class ApplicationYamlSettingsTest {
 
     @Autowired
     private AppYamlSettings appYamlSettings;
