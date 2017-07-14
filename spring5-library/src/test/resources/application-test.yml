@@ -1,0 +1,3 @@
+service:
+  name: SampleServiceComponentRdTest
+  version:  0.0.99
