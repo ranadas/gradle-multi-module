@@ -1,7 +1,9 @@
 package com.iptranslator.utils;
 
+import com.iptranslator.config.LanguageCodeSettings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
@@ -17,79 +19,82 @@ import java.util.stream.Collectors;
  * TODO : should really return Optional instead of null.
  */
 @Service
-@EnableConfigurationProperties
-@ConfigurationProperties(prefix = "langcodes")
+//@EnableConfigurationProperties
+//@ConfigurationProperties(prefix = "langcodes")
 public class LanguageCodeResolver {
     private final Logger logger = LoggerFactory.getLogger(LanguageCodeResolver.class);
 
     public final static String STANDARD_6392B = "639-2/B";
     public final static String STANDARD_KILGRAY = "Kilgray";
-    /**
-     * Standard ISO language codes: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-     * <p>
-     * Our language codes are based on 639-1
-     */
+//    /**
+//     * Standard ISO language codes: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+//     * <p>
+//     * Our language codes are based on 639-1
+//     */
+//
+//    //Column 639-1
+//    private Map<String, String> languageMap6391;
+//
+//    //Column 639-2/B
+//    private Map<String, String> languageMap6392B;
+//
+//    public void setLanguageMap6392B(Map<String, String> languageMap6392B) {
+//        this.languageMap6392B = languageMap6392B;
+//    }
+//
+//    /**
+//     * Kilgray language codes for MemoQPlugin
+//     */
+//    @NotNull
+//    @Valid
+//    private Map<String, String> languageMapKilgray;
+//
+//    public void setLanguageMapKilgray(Map<String, String> languageMapKilgray) {
+//        this.languageMapKilgray = languageMapKilgray;
+//    }
+//
+//    @NotNull
+//    @Valid
+//    private Map<String, String> bingLanguageMapping;
+//    public void setBingLanguageMapping(Map<String, String> bingLanguageMapping) {
+//        this.bingLanguageMapping = bingLanguageMapping;
+//    }
+//    public Map<String, String> getBingMapping() {
+//        return Collections.unmodifiableMap(bingLanguageMapping);
+//    }
+//
+//    @PostConstruct
+//    public void handlersLikeXml() {
+//        languageMap6391 = Collections.unmodifiableMap(new HashMap<String, String>() {
+//            {
+//                put("en", "en");
+//                put("fr", "fr");
+//                put("de", "de");
+//                put("pt", "pt");
+//                put("es", "es");
+//                put("zhcn", "zhcn");
+//                put("zhtw", "zhtw");
+//                put("ja", "ja");
+//                put("ko", "ko");
+//                put("ru", "ru");
+//                put("ga", "ga");
+//                put("el", "el");
+//                put("nl", "nl");
+//                put("ro", "ro");
+//            }
+//        });
+//        logger.info(" in LanguageCodeResolver Post Construct!!!");
+//    }
 
-    //Column 639-1
-    private Map<String, String> languageMap6391;
-
-    //Column 639-2/B
-    private Map<String, String> languageMap6392B;
-
-    public void setLanguageMap6392B(Map<String, String> languageMap6392B) {
-        this.languageMap6392B = languageMap6392B;
-    }
-
-    /**
-     * Kilgray language codes for MemoQPlugin
-     */
-    @NotNull
-    @Valid
-    private Map<String, String> languageMapKilgray;
-
-    public void setLanguageMapKilgray(Map<String, String> languageMapKilgray) {
-        this.languageMapKilgray = languageMapKilgray;
-    }
-
-    @NotNull
-    @Valid
-    private Map<String, String> bingLanguageMapping;
-    public void setBingLanguageMapping(Map<String, String> bingLanguageMapping) {
-        this.bingLanguageMapping = bingLanguageMapping;
-    }
-    public Map<String, String> getBingMapping() {
-        return Collections.unmodifiableMap(bingLanguageMapping);
-    }
-
-    @PostConstruct
-    public void handlersLikeXml() {
-        languageMap6391 = Collections.unmodifiableMap(new HashMap<String, String>() {
-            {
-                put("en", "en");
-                put("fr", "fr");
-                put("de", "de");
-                put("pt", "pt");
-                put("es", "es");
-                put("zhcn", "zhcn");
-                put("zhtw", "zhtw");
-                put("ja", "ja");
-                put("ko", "ko");
-                put("ru", "ru");
-                put("ga", "ga");
-                put("el", "el");
-                put("nl", "nl");
-                put("ro", "ro");
-            }
-        });
-        logger.info(" in LanguageCodeResolver Post Construct!!!");
-    }
+    @Autowired
+    private LanguageCodeSettings codeSettings;
 
     public boolean areValidLanguages(String from, String to) {
-        if (languageMap6391.containsKey(from) && languageMap6391.containsKey(to)) {
+        if (codeSettings.getLanguageMap6391().containsKey(from) && codeSettings.getLanguageMap6391().containsKey(to)) {
             return true;
-        } else if (languageMap6392B.containsKey(from) && languageMap6392B.containsKey(to)) {
+        } else if (codeSettings.getLanguageMap6392B().containsKey(from) && codeSettings.getLanguageMap6392B().containsKey(to)) {
             return true;
-        } else if (containsCaseInsensitive(from, languageMapKilgray) && containsCaseInsensitive(to, languageMapKilgray)) {
+        } else if (containsCaseInsensitive(from, codeSettings.getLanguageMapKilgray()) && containsCaseInsensitive(to, codeSettings.getLanguageMapKilgray())) {
             return true;
         } else {
             return false;
@@ -105,13 +110,13 @@ public class LanguageCodeResolver {
 
     public List<String> getLanguages(String languagesCodeStandard, List<String> languages) {
         if (LanguageCodeResolver.STANDARD_6392B.equals(languagesCodeStandard)) {
-            return languageMap6392B.entrySet()
+            return codeSettings.getLanguageMap6392B().entrySet()
                     .parallelStream()
                     .filter(e -> languages.contains(e.getValue()))
                     .map(Map.Entry::getKey)
                     .collect(Collectors.toList());
         } else if (LanguageCodeResolver.STANDARD_KILGRAY.equals(languagesCodeStandard)) {
-            return languageMapKilgray.entrySet()
+            return codeSettings.getLanguageMapKilgray().entrySet()
                     .parallelStream()
                     .filter(e -> languages.contains(e.getValue()))
                     .map(Map.Entry::getKey)
@@ -123,12 +128,12 @@ public class LanguageCodeResolver {
 
     public String getStandardLanguageCode(String lang) {
         lang = lang.toLowerCase();
-        if (languageMap6391.containsKey(lang)) {
+        if (codeSettings.getLanguageMap6391().containsKey(lang)) {
             return lang;
-        } else if (languageMap6392B.containsKey(lang)) {
-            return languageMap6392B.get(lang);
-        } else if (containsCaseInsensitive(lang, languageMapKilgray)) {
-            return getValueCaseInsensitive(lang, languageMapKilgray);
+        } else if (codeSettings.getLanguageMap6392B().containsKey(lang)) {
+            return codeSettings.getLanguageMap6392B().get(lang);
+        } else if (containsCaseInsensitive(lang, codeSettings.getLanguageMapKilgray())) {
+            return getValueCaseInsensitive(lang, codeSettings.getLanguageMapKilgray());
         } else {
             return null;
         }
