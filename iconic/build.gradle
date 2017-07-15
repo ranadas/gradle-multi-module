@@ -21,7 +21,7 @@ configurations {
 group = 'com.iptranslator'
 
 jar {
-    baseName = 'iconic-language-code-resolver'
+    baseName = 'iconic-language-resolver'
     version = '0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
@@ -30,17 +30,20 @@ repositories { mavenCentral() }
 
 dependencies {
     compile libraries.lombok
+    compile libraries.chalk
     compile('org.springframework.boot:spring-boot-starter')
-//    compile group: 'javax.validation', name: 'validation-api', version: '2.0.0.CR2'
-//    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.0.CR2'
-    compile "org.hibernate:hibernate-validator:5.4.1.Final"
-//    compile "javax.validation:validation-api:1.1.0.Final"
-//    compile "org.jboss.logging:jboss-logging:3.3.1.Final"
-//    compile "com.fasterxml:classmate:1.3.3"
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile project(':spring5-library')
+    //compile "org.hibernate:hibernate-validator:5.4.1.Final "
 }
 
 
 dependencyManagement {
     imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
+}
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
 }

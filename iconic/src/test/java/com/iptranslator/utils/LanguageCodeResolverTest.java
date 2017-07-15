@@ -1,7 +1,7 @@
 package com.iptranslator.utils;
 
-import com.iptranslator.config.LanguageCodeSettings;
 import com.iptranslator.config.TestConfig;
+import com.rdas.config.LanguageCodeSettings;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,13 +19,6 @@ import static org.hamcrest.core.Is.is;
 /**
  * Created by rdas on 08/07/2017.
  */
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
-//@ActiveProfiles("dev")
-
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = {TestConfig.class}, initializers = ConfigFileApplicationContextInitializer.class)
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfig.class)
 public class LanguageCodeResolverTest {
@@ -34,14 +27,14 @@ public class LanguageCodeResolverTest {
     private LanguageCodeResolver languageCodeResolver;
 
     @Autowired
-    private LanguageCodeSettings  codeSettings;
+    private LanguageCodeSettings codeSettings;
 
     private List<String> languages;
 
     @Before
     public void init() throws Exception {
         languages = Arrays.asList("eng", "es", "de", "fr", "it");
-        System.out.printf(codeSettings.getBingMapping().toString());
+        System.out.printf(codeSettings.getBingLanguageMapping().toString());
     }
 
     @Test
