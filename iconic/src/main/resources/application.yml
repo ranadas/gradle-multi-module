@@ -8,3 +8,151 @@ logging:
   level:
     org.springframework: ERROR
     com.iptranslator: DEBUG
+langcodes:
+  languageMapKilgray:
+    eng:  en
+    eng-BZ: en
+    eng-CA: en
+    eng-CB: en
+    eng-IE: en
+    eng-JM: en
+    eng-NZ: en
+    eng-PH: en
+    eng-ZA: en
+    eng-TT: en
+    eng-GB: en
+    eng-US: en
+    eng-ZW: en
+    fre:  fr
+    fre-BE: fr
+    fre-CA: fr
+    fre-FR: fr
+    fre-LU: fr
+    fre-MC: fr
+    fre-CH: fr
+    ger: de
+    ger-AT: de
+    ger-DE: de
+    ger-LI: de
+    ger-LU: de
+    ger-CH: de
+    por : pt
+    por-PT: pt
+    por-BR: pt
+    spa:  es
+    spa-AR: es
+    spa-BO: es
+    spa-CL: es
+    spa-CO: es
+    spa-CR: es
+    spa-DO: es
+    spa-EC: es
+    spa-SV: es
+    spa-GT: es
+    spa-HN: es
+    spa-MX: es
+    spa-NI: es
+    spa-PA: es
+    spa-PY: es
+    spa-PE: es
+    spa-PR: es
+    spa-ES: es
+    spa-UY: es
+    spa-VE: es
+    zho-CN: zhcn
+    zho-TW: zhtw
+    zho-HK: zhtw
+    zho-MO: zhtw
+    zho-SG: zhtw
+    jpn:  ja
+    kor:  ko
+    gle:  ga
+  languageMap6392B:
+    eng: en
+    fre: fr
+    ger: de
+    por: pt
+    spa: es
+    chi_zh: zhcn
+    chi_tw: zhtw
+    jpn: ja
+    kor: ko
+    rus: ru
+    gle: ga
+  bingLanguageMapping:
+    af: Afrikaans
+    ar: Arabic
+    bs-Latn: Bosnian (Latin)
+    bg: Bulgarian
+    ca: Catalan
+    zh-CHS: Chinese Simplified
+    zh-CHT: Chinese Traditional
+    hr: Croatian
+    cs: Czech
+    da: Danish
+    nl: Dutch
+    en: English
+    et: Estonian
+    fi: Finnish
+    fr: French
+    de: German
+    el: Greek
+    ht: Haitian Creole
+    he: Hebrew
+    hi: Hindi
+    mww: Hmong Daw
+    hu: Hungarian
+    id: Indonesian
+    it: Italian
+    ja: Japanese
+    sw: Kiswahili
+    tlh-Qaak: Klingon (pIqaD)
+    ko: Korean
+    lv: Latvian
+    lt: Lithuanian
+    ms: Malay
+    mt: Maltese
+    no: Norwegian
+    fa: Persian
+    pl: Polish
+    pt: Portuguese
+    ro: Romanian
+    ru: Russian
+    sr-Cyrl: Serbian (Cyrillic)
+    sr-Latn: Serbian (Latin)
+    sk: Slovak
+    sl: Slovenian
+    es: Spanish
+    sv: Swedish
+    th: Thai
+    tr: Turkish
+    uk: Ukrainian
+    ur: Urdu <!-- Abbyy does not support according to DIS-54 -->
+    vi: Vietnamese
+    cy: Welsh
+    yua: Yucatec Maya
+    yue: Cantonese (Traditional)
+    fj: Fijian
+    fil: Filipino <!-- Abbyy does not support according to DIS-54-->
+    mg: Malagasy
+    sm: Samoan
+    ty: Tahitian
+    to: Tongan
+    zhcn: Simplified Chinese
+    zhtw: Traditional Chinese
+    ga: Gaelic
+  languageMap6391:
+    en: en
+    fr: fr
+    de: de
+    pt: pt
+    es: es
+    zhcn: zhcn
+    zhtw: zhtw
+    ja: ja
+    ko: ko
+    ru: ru
+    ga: ga
+    el: el
+    nl: nl
+    ro: ro
