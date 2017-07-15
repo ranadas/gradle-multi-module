@@ -5,7 +5,6 @@ buildscript {
 plugins { id "io.spring.dependency-management" version "1.0.0.RELEASE" }
 
 ext {
-    lombokVersion = '1.16.18'
     springBootVersion = '1.5.4.RELEASE'
 }
 
@@ -18,14 +17,14 @@ sourceCompatibility = 1.8
 repositories { mavenCentral() }
 
 dependencies {
-    compile "org.projectlombok:lombok:${lombokVersion}"
+    compile libraries.lombok
+    compile libraries.chalk
     compile('org.springframework.boot:spring-boot-starter')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile "com.jcabi:jcabi-http:1.17.1"
-    compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.4.1.Final'
-    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1-m09'
-    compile group: 'org.glassfish.jersey.core', name: 'jersey-common', version: '2.25.1'
-    compile libraries.chalk
+    compile "org.hibernate:hibernate-validator:5.4.1.Final"
+    compile "javax.ws.rs:javax.ws.rs-api:2.1-m09"
+    compile "org.glassfish.jersey.core:jersey-common:2.25.1"
 }
 
 dependencyManagement {
