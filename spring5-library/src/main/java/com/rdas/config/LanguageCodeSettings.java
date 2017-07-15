@@ -11,8 +11,9 @@ import java.util.Map;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "langcodes")
-public class YamlLanguageSettings {
+public class LanguageCodeSettings {
     private Map<String, String> languageMapKilgray;
     private Map<String, String> languageMap6392B;
     private Map<String, String> bingLanguageMapping;
+    private Map<String, String> languageMap6391;
 }

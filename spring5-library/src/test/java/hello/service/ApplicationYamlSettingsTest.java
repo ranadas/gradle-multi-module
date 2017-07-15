@@ -1,25 +1,27 @@
 package hello.service;
 
+import com.github.tomaslanger.chalk.Chalk;
 import com.rdas.config.AppYamlSettings;
-import com.rdas.config.YamlLanguageSettings;
+import com.rdas.config.LanguageCodeSettings;
 import hello.config.TestConfiguration;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfiguration.class)
 //@WebAppConfiguration
 public class ApplicationYamlSettingsTest {
-
+    private final Logger logger = LoggerFactory.getLogger(ApplicationYamlSettingsTest.class);
     @Autowired
     private AppYamlSettings appYamlSettings;
     @Autowired
-    private YamlLanguageSettings yamlLanguageSettings;
+    private LanguageCodeSettings yamlLanguageSettings;
 
     @Test
     public void contextLoads() {
@@ -31,8 +33,14 @@ public class ApplicationYamlSettingsTest {
     }
 
     @Test
-    public void assertThatlanguageCodeIsMapped() {
+    public void assertThatlanguageCodeIsSetFromYaml() {
         Assert.assertNotNull(yamlLanguageSettings);
         Assert.assertTrue("Kilgray Codes mapped", yamlLanguageSettings.getLanguageMapKilgray().size()>0);
+    }
+
+    @Test
+    public void assertThat6391languageCodeIsSetFromYaml() {
+        logger.info("{}", Chalk.on("\n\t--> Checking LanguageMap6391 is Set!" ).blue());
+        Assert.assertNotNull(yamlLanguageSettings.getLanguageMap6391());
     }
 }

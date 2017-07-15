@@ -6,7 +6,7 @@ spring:
 
 logging:
   level:
-    org.springframework.web: ERROR
+    org.springframework: ERROR
     com.iptranslator: DEBUG
 service:
   name: SampleServiceComponentRd
@@ -145,3 +145,18 @@ langcodes:
     zhcn: Simplified Chinese
     zhtw: Traditional Chinese
     ga: Gaelic
+  languageMap6391:
+    en: en
+    fr: fr
+    de: de
+    pt: pt
+    es: es
+    zhcn: zhcn
+    zhtw: zhtw
+    ja: ja
+    ko: ko
+    ru: ru
+    ga: ga
+    el: el
+    nl: nl
+    ro: ro
