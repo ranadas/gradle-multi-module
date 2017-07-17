@@ -21,4 +21,5 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-activemq")
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile "org.springframework:spring-jms"
+    testCompile group: 'org.apache.activemq', name: 'activemq-kahadb-store', version: '5.15.0'
 }

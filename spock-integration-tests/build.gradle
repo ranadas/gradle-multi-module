@@ -17,17 +17,21 @@ apply plugin: 'groovy'
 
 dependencies {
     compile project(':common')
-//    compile('org.springframework.boot:spring-boot-starter-web') {
-//        exclude module: "spring-boot-starter-tomcat"
-//    }
-//    compile("org.springframework.boot:spring-boot-starter-jetty")
-
+    compile project(':iconic')
+    compile project(':spring5-library')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile "javax.validation:validation-api"
     testCompile "org.hibernate:hibernate-validator"
-    compile libraries.junit
-    testCompile(
-            'org.codehaus.groovy:groovy-all:2.4.11',
-            'org.spockframework:spock-core:1.1-groovy-2.4'
-    )
+    testCompile libraries.groovy
+    testCompile libraries.spock
+    //eenables mocking of classes (in addition to interfaces
+    testCompile "net.bytebuddy:byte-buddy:1.6.5"
+    // enables mocking of classes without default constructor (together with CGLIB)
+    testCompile "org.objenesis:objenesis:2.5.1"
+}
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
 }
