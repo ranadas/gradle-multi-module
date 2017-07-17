@@ -3,7 +3,7 @@ before_install:
 - sudo apt-get -y upgrade
 - sudo apt-get install -qq groovy
 - sudo apt-get install -qq gradle
-sudo: false
+sudo: true
 dist: trusty
 language: java
 jdk:
