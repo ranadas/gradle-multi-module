@@ -6,6 +6,7 @@ http://pretius.com/deploying-multiple-spring-boot-applications-to-single-applica
 
 
 
+
+
 Build Status : 
-![alt text][logo]
-[logo]: https://travis-ci.org/ranadas/gradle-multi-module.svg?branch=master "Logo Title Text 2"
+[![Build Status](https://travis-ci.org/ranadas/gradle-multi-module.svg?branch=master)](https://travis-ci.org/ranadas/gradle-multi-module.svg?branch=master)
