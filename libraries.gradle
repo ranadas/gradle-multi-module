@@ -13,6 +13,7 @@ ext {
     chalk_version="1.0.2"
     groovy_version="2.4.11"
     spock_version="1.1-groovy-2.4"
+    quartz_version="2.3.0"
 
     libraries = [
             junit         : dependencies.create("junit:junit:${junitVersion}"),
@@ -29,5 +30,7 @@ ext {
             chalk         : dependencies.create("com.github.tomas-langer:chalk:${chalk_version}"),
             groovy        : dependencies.create("org.codehaus.groovy:groovy-all:${groovy_version}"),
             spock        : dependencies.create("org.spockframework:spock-core:${spock_version}")
+            quartz        : dependencies.create("org.quartz-scheduler:quartz:${quartz_version}"),
+            quartzjobs    : dependencies.create("org.quartz-scheduler:quartz-jobs:${quartz_version}")
     ]
 }
